@@ -9,11 +9,11 @@ macro_rules! err_print(
         }
     );
 
-    ($fmt:expr, $($xs:expr)*) => (printerrln!(format!($fmt, $($xs)* )));
+    ($fmt:expr, $($xs:expr)*) => (err_print!(format!($fmt, $($xs)* )));
 )
 
 #[macro_export]
 macro_rules! err_println(
-    ($msg:expr) => (printerr!(format!("{:s}\n", $msg)));
-    ($fmt:expr, $($xs:expr)*) => (printerrln!(format!($fmt, $($xs)* )));
+    ($msg:expr) => (err_print!(format!("{:s}\n", $msg)));
+    ($fmt:expr, $($xs:expr)*) => (err_println!(format!($fmt, $($xs)* )));
 )
