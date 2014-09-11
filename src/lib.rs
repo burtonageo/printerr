@@ -14,6 +14,6 @@ macro_rules! printerr(
 
 #[macro_export]
 macro_rules! printerrln(
-    ($msg:expr) => (printerr!(format!("{:s}\n", $msg).as_bytes()));
+    ($msg:expr) => (printerr!(format!("{}\n", $msg)));
     ($fmt:expr, $($xs:expr)*) => (printerrln!(format!($fmt, $($xs)* )));
 )
