@@ -3,13 +3,19 @@
 use std::io;
 
 #[macro_export]
-macro_rules! printerrln(
-    ($s:expr) => (
-        match io::stderr().write(format!("{:s}\n", $s).as_bytes()) {
+macro_rules! printerr(
+    ($msg:expr) => (
+        match io::stderr().write(format!("{:s}", $msg).as_bytes()) {
             Ok(_) => { }
             Err(_) => { }
         }
     );
 
-    ($pat:expr, $($itm:expr),+) => (printerrln!(format!($pat, $($itm)+ )));
+    ($fmt:expr, $($xs:expr)*) => (printerrln!(format!($fmt, $($xs)* )));
+)
+
+#[macro_export]
+macro_rules! printerrln(
+    ($msg:expr) => (printerr!(format!("{:s}\n", $msg).as_bytes()));
+    ($fmt:expr, $($xs:expr)*) => (printerrln!(format!($fmt, $($xs)* )));
 )
