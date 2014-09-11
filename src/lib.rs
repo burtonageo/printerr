@@ -1,7 +1,5 @@
 #![feature(macro_rules)]
 
-use std::io;
-
 #[macro_export]
 macro_rules! printerr(
     ($msg:expr) => (
