@@ -3,7 +3,7 @@
 #[macro_export]
 macro_rules! err_print(
     ($msg:expr) => (
-        match io::stderr().write(format!("{:s}", $msg).as_bytes()) {
+        match std::io::stderr().write(format!("{:s}", $msg).as_bytes()) {
             Ok(_) => { }
             Err(_) => { }
         }
